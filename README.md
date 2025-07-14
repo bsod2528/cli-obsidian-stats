@@ -21,7 +21,7 @@ $ pip install -r requirements
 
 # Usage
 
-> [!NOTICE]
+> [!NOTE]
 Run the programme in a virtual environment, global package has yet to be released / done.
 
 So far only two commands are present:
