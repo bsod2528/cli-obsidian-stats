@@ -98,3 +98,24 @@ def directory_stats(source: str, destination: str = "") -> None:
             f"Total files: {total_files}\n"
             f"Average word count: {average_word_count}"
         )
+
+
+def aggregator(source: str, destination: str = "") -> None:
+    """
+    Pastes all content from different files into a single file.
+    """
+
+    if destination == "":
+        destination = "output.md"
+
+    with open(destination, "w") as output:
+        output.write("Aggregated file, check content below:\n\n")
+
+    for root, sub_paths, files in os.walk(source):
+        for file in files:
+            if file.endswith(".md"):
+                with open(f"{root}/{file}") as buffer:
+                    with open(destination, "a") as output:
+                        for lines in buffer:
+                            output.write(lines)
+                        output.write("\n")

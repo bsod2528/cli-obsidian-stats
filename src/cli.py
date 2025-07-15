@@ -16,7 +16,7 @@
 
 import click
 
-from main import file_stats, directory_stats
+from main import file_stats, directory_stats, aggregator
 
 
 @click.group()
@@ -28,8 +28,8 @@ def cli():
 # @click.argument("source")
 # @click.argument("destination")
 @click.option("--source", help="Input file to generate stats of.", metavar="<path>")
-@click.option("--destination", default="", help="Output file path", metavar="<path>")
-def c_file_stat(source, destination):
+@click.option("--destination", default="", help="Output file path.", metavar="<path>")
+def c_file_stat(source, destination) -> None:
     file_stats(source, destination)
 
 
@@ -40,15 +40,28 @@ def c_file_stat(source, destination):
 @click.option(
     "--destination",
     default="",
-    help="Generated stat file path",
+    help="Generated stat file path.",
     metavar="<path>",
 )
-def c_directory_stat(source, destination):
+def c_directory_stat(source, destination) -> None:
     directory_stats(source, destination)
+
+
+@click.command(name="aggregator")
+@click.option("--source", help="Input directory to be aggregated.", metavar="<path>")
+@click.option(
+    "--destination",
+    default="",
+    help="Output path of the aggregated file.",
+    metavar="<path>",
+)
+def c_aggregator(source, destination) -> None:
+    aggregator(source, destination)
 
 
 cli.add_command(c_file_stat)
 cli.add_command(c_directory_stat)
+cli.add_command(c_aggregator)
 
 if __name__ == "__main__":
     cli()
