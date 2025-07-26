@@ -2,3 +2,6 @@ env
 __pycache__
 output.md
 md input
+*.egg-info/
+.mvog
+.mvogignore

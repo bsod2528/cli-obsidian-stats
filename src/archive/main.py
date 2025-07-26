@@ -1,4 +1,4 @@
-# Obsidian-Stats: A CLI Tool
+# mvog
 # Copyright (C) 2025 Vishal Srivatsava AV
 #
 # This program is free software: you can redistribute it and/or modify
@@ -14,8 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <https:#www.gnu.org/licenses/>.
 
-import os
 import collections
+import os
 
 import click
 from markdown_it import MarkdownIt
